@@ -1,0 +1,70 @@
+{
+	"version": 1,
+	"named_parameters": true,
+	"parameters": [
+		{
+			"id": "r2NQ8cG8vKy5Ucb1",
+			"name": "Input BAM File",
+			"param_name": "input_bam",
+			"description": "A BAM file of input reads",
+			"help_text": "BAM/SAM/CRAM file containing reads. May be host aligned or not; set Is Host Aligned accordingly. ",
+			"type": "text",
+			"value_type": "string",
+			"required": true,
+			"pattern": "^\\S+.(bam|sam|cram)$"
+		},
+		{
+			"id": "FD2tqpfCCO4YjmIv",
+			"name": "Output Basename",
+			"param_name": "out_base",
+			"description": "Prefix for the paired and unpaired output reads. ",
+			"help_text": "Output will included paired output as {BASENAME}_paired.bam and unpaired output as {BASENAME}_unpaired.bam. Default: filtered_reads",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "filtered_reads",
+			"required": true
+		},
+		{
+			"id": "9nAv7Eat3xyRYoxr",
+			"name": "Host Kmers",
+			"param_name": "kmer-file",
+			"description": "Kmer index file created from host genome",
+			"help_text": "Path to host k-mer file generated with PathSeqBuildKmers.",
+			"type": "text",
+			"value_type": "string",
+			"required": true,
+			"pattern": "^\\S+.(hss|bfi)$"
+		},
+		{
+			"id": "SWcA7IcqaFRUmjvp",
+			"name": "Is Host Aligned",
+			"param_name": "is-host-aligned",
+			"description": "Set if the input BAM is aligned to the host",
+			"help_text": "If input reads are aligned to host genome, select True. (False will always work.)",
+			"type": "list",
+			"value_type": "boolean",
+			"default_value": "False",
+			"extra_data": []
+		},
+		{
+			"id": "YzglBfcDHA76APt7",
+			"name": "BWA Image Host",
+			"param_name": "filter-bwa-image",
+			"description": "BWA image file of the host reference. ",
+			"help_text": "The BWA image file of the host reference. This must be distributed to local disk on each node. This file should be created by GATK BwaMemIndexImageCreator.",
+			"type": "text",
+			"value_type": "string",
+			"required": true
+		},
+		{
+			"id": "598cst8ZRnd8I9s7",
+			"name": "Metrics file",
+			"param_name": "filter-metrics",
+			"description": "Log counts of filtered reads to this file",
+			"help_text": "If specified, records the number of reads remaining after each of the following steps: Pre-aligned host read filtering Low-quality and low-complexity sequence filtering Host read subtraction Read deduplication It also provides the following: Number of low-quality and low-complexity reads removed Number of host reads removed Number of duplicate reads removed Final number of reads Final number of paired reads Final number of unpaired reads Note that using this option may substantially increase runtime.",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "metrics.txt"
+		}
+	]
+}
