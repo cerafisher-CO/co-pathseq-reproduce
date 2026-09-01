@@ -1,0 +1,7 @@
+# hash:sha256:4a872649557fe74aa295dda78eb6c501adb4e2c88f78bd13204f3e00b4198e94
+ARG REGISTRY_HOST
+FROM $REGISTRY_HOST/codeocean/gatk:4.6.1.0
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG GIT_ASKPASS
+COPY git-ask-pass /
