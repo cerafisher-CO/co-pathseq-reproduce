@@ -1,0 +1,17 @@
+{
+	"version": 1,
+	"attached_datasets": [
+		{
+			"id": "20aa37a7-e326-415b-a242-7074e69d2cbe",
+			"mount": "bams"
+		},
+		{
+			"id": "6203c83b-8bc5-4347-86e9-f0680644d6b4",
+			"mount": "host-img"
+		},
+		{
+			"id": "85f9d5de-336c-4866-b1a4-5ce2c4f74a95",
+			"mount": "host-kmers"
+		}
+	]
+}
