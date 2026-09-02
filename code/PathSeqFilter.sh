@@ -37,7 +37,7 @@ is_host_aligned="${is_host_aligned,,}"
 mkdir -p /scratch/tmpdir
 
 # ── Step 1: PathSeqFilterSpark ────────────────────────────────────────────────
-cmd=(gatk --java-options "-Xmx4GB" PathSeqFilterSpark
+cmd=(gatk --java-options "-Xmx4G" PathSeqFilterSpark
   --input              "${input_bam}"
   --is-host-aligned    "${is_host_aligned}"
   --paired-output      "/results/${out_base}_paired.bam"
