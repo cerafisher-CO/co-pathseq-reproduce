@@ -40,8 +40,8 @@ mkdir -p /scratch/tmpdir
 cmd=(gatk --java-options "-Xmx4G" PathSeqFilterSpark
   --input              "${input_bam}"
   --is-host-aligned    "${is_host_aligned}"
-  --paired-output      "/results/${out_base}_paired.bam"
-  --unpaired-output    "/results/${out_base}_unpaired.bam"
+  --paired-output      "../results/${out_base}_paired.bam"
+  --unpaired-output    "../results/${out_base}_unpaired.bam"
   --min-clipped-read-length 60
   --kmer-file          "${kmer_file}"
   --filter-bwa-image   "${filter_bwa_image}"
@@ -50,6 +50,6 @@ cmd=(gatk --java-options "-Xmx4G" PathSeqFilterSpark
   --conf               "spark.local.dir=/scratch/tmpdir"
 )
 
-[[ -n "$filter_metrics" ]] && cmd+=(--filter-metrics "/results/${filter_metrics}")
+[[ -n "$filter_metrics" ]] && cmd+=(--filter-metrics "../results/${filter_metrics}")
 
 "${cmd[@]}"
