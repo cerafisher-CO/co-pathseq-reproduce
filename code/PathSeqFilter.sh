@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+source ./config.sh
 #### PathSeqFilterSpark — named-parameter entry point
 
 # ── Defaults 
