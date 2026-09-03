@@ -2,15 +2,14 @@
 ## For any special handling needed for app panel parameters
 
 # -e: exit immediately if any command exits with a non-zero status
-# -x: print each command to stderr before executing it (useful for debugging pipeline runs)
+# -x: print each command to stderr before executing it (so you can see what each round of a for loop does, for example)
 set -ex
 
 # 1. Check whether the script was invoked with any positional arguments ($# is
 # the argument count). If none were passed, just note that the script is
 # running. If arguments were passed, print each one individually — this is
 # purely informational/logging, it doesn't affect control flow later.
-#### Note to self added while WIP, I'm going to use named arguments, so I might need to use 
-#### different stuff here. 
+
 if [ $# -eq 0 ]; then
   echo "Running"
 else
@@ -34,5 +33,15 @@ else
   fi
 fi
 
+# 3. Find the BAM file. We want to set this up to be able to generalize across whatever data asset we get. PathseqFilter can run on bam/sam/cram but will need a .crai if it gets a cram. 
+some_alignment=$(find -L ../data \( -name "*.bam" -o -name "*.sam" -o -name "*.cram" \) | head -1)
+if [[ "$some_alignment" == *.cram ]]; then
+  cram_base=$(basename "$some_alignment")
+  some_index=$(find -L ../data \( -name "${cram_base}.crai" -o -name "${cram_base%.cram}.crai" \) | head -1)
+  if [ -z "$some_index" ]; then
+    echo "Error: no .crai index found for $some_alignment" >&2
+    exit 1
+  fi
+fi
 
 
