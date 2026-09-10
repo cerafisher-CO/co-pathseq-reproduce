@@ -45,6 +45,14 @@ if [[ "$some_alignment" == *.cram ]]; then
 fi
 
 # 4. Find the host kmer file 
-kmer_file=$(find -L ../data \( -name "*.hss$" -o -name "*.bfi$"))
+kmer_file=$(find -L ../data \( -name "*.hss$" -o -name "*.bfi$" \) | head -1)
+if [ -z "$kmer_file"]; then
+    echo "Error: No host kmer file found" >&2
+    exit 1
+else
+    echo "Host kmer file: $kmer_file"
+fi
 
+# 5. Find the host BWA img file 
+host_img=$(find -L ../data \( -name "*.img$" ))
 
