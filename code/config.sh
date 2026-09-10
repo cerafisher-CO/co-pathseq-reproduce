@@ -45,8 +45,9 @@ if [[ "$some_alignment" == *.cram ]]; then
 fi
 
 # 4. Find the host kmer file 
-kmer_file=$(find -L ../data \( -name "*.hss$" -o -name "*.bfi$" \) | head -1)
-if [ -z "$kmer_file"]; then
+kmer_file=$(find -L ../data \( -name "*.hss" -o -name "*.bfi" \) | head -1)
+
+if [ -z "$kmer_file" ]; then
     echo "Error: No host kmer file found" >&2
     exit 1
 else
