@@ -39,9 +39,12 @@ if [[ "$some_alignment" == *.cram ]]; then
   cram_base=$(basename "$some_alignment")
   some_index=$(find -L ../data \( -name "${cram_base}.crai" -o -name "${cram_base%.cram}.crai" \) | head -1)
   if [ -z "$some_index" ]; then
-    echo "Error: no .crai index found for $some_alignment" >&2
+    echo "Error: no .crai index found for $some_alignment" >&2 ## todo - test
     exit 1
   fi
 fi
+
+# 4. Find the host kmer file 
+kmer_file=$(find -L ../data \( -name "*.hss$" -o -name "*.bfi$"))
 
 
