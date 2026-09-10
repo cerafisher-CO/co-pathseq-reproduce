@@ -14,4 +14,14 @@ filter_metrics="metrics.txt"
 
 
 
-echo "gatk --java-options '-Xmx4G' PathSeqFilterSpark \  --input              ${input_bam} \  --is-host-aligned    ${is_host_aligned} \  --paired-output      /results/${out_base}_paired.bam \  --unpaired-output    /results/${out_base}_unpaired.bam \  --min-clipped-read-length 60   --kmer-file          ${kmer_file} \  --filter-bwa-image   ${filter_bwa_image} \  --bam-partition-size 4000000 \  --spark-master       'local[*]' \  --conf               spark.local.dir=/scratch/tmpdir "
+gatk --java-options "-Xmx4G" PathSeqFilterSpark \
+  --input              ${input_bam} \
+  --is-host-aligned    ${is_host_aligned} \
+  --paired-output      /results/${out_base}_paired.bam \
+  --unpaired-output    /results/${out_base}_unpaired.bam \
+  --min-clipped-read-length 60  \
+  --kmer-file          ${kmer_file} \
+  --filter-bwa-image   ${filter_bwa_image} \
+  --bam-partition-size 4000000 \
+  --spark-master       'local[*]' \
+  --conf               spark.local.dir=/scratch/tmpdir 
