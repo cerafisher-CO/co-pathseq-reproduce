@@ -55,5 +55,5 @@ else
 fi
 
 # 5. Find the host BWA img file 
-host_img=$(find -L ../data \( -name "*.img$" ))
+host_img=$(find -L ../data \( -name "*.img" \) | head -1 )
 
